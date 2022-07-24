@@ -1,7 +1,11 @@
+import { useSelector } from 'react-redux'
 import { PokemonCard } from "./PokemonCard"
 import './Pokemon.css'
 
-export const PokemonList = ({ pokemons }) => {
+export const PokemonList = () => {
+
+  const { pokemons = [] } = useSelector(state => state.pokemons)
+
   return (
     <div className="PokemonList">
       {
