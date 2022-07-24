@@ -5,14 +5,10 @@ export const PokemonList = ({ pokemons }) => {
   return (
     <div className="PokemonList">
       {
-        pokemons.map((idx) => (
-          <PokemonCard key={idx} />
+        pokemons.map(({ name }) => (
+          <PokemonCard key={name} name={name} />
         ))
       }
     </div>
   )
-}
-
-PokemonList.defaultProps = {
-  pokemons: Array(10).fill('')
 }

@@ -1,3 +1,7 @@
 .App {
   margin-top: 3rem;
 }
+
+.App__logo-container {
+  margin-bottom: 2rem;
+}

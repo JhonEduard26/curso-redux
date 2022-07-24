@@ -3,7 +3,7 @@ import { StarOutlined } from '@ant-design/icons'
 
 const { Meta } = Card
 
-export const PokemonCard = () => {
+export const PokemonCard = ({ name }) => {
 
   return (
     <Card
@@ -17,7 +17,7 @@ export const PokemonCard = () => {
       ]}
     >
       <Meta
-        title="Ditto"
+        title={name}
         description="Normal"
       />
     </Card>
