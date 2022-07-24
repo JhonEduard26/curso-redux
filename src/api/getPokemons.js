@@ -12,7 +12,13 @@ export const getPokemons = async () => {
 export const getPokemonsDetails = async (pokemon) => {
   try {
     const { data } = await pokemonApi.get(pokemon.url)
-    return data
+    const { name, types, sprites, id } = data
+    return {
+      name,
+      types,
+      sprites,
+      id
+    }
   } catch (error) {
     console.log(error)
   }

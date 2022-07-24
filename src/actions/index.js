@@ -1,5 +1,5 @@
 import { getPokemonsDetails } from "../api/getPokemons"
-import { LOAD_POKEMONS, SET_POKEMONS } from "./types"
+import { LOAD_POKEMONS, SET_FAVORITE, SET_POKEMONS } from "./types"
 
 const setPokemons = (payload) => ({
   type: SET_POKEMONS,
@@ -8,6 +8,11 @@ const setPokemons = (payload) => ({
 
 export const loadPokemons = () => ({
   type: LOAD_POKEMONS
+})
+
+export const setFavorite = (payload) => ({
+  type: SET_FAVORITE,
+  payload
 })
 
 export const getPokemonsWithDetails = (pokemons = []) =>

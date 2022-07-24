@@ -9,12 +9,15 @@ export const PokemonList = () => {
   return (
     <div className="PokemonList">
       {
-        pokemons.map(({ name, sprites, types }) => (
+        pokemons.map(({ name, types, sprites, id, favorite }) => (
           <PokemonCard
             key={name}
             name={name}
-            sprite={sprites.front_default}
-            types={types} />
+            types={types}
+            sprites={sprites}
+            favorite={favorite}
+            id={id}
+          />
         ))
       }
     </div>
