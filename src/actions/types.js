@@ -1,1 +1,3 @@
 export const SET_POKEMONS = 'SET_POKEMONS'
+
+export const LOAD_POKEMONS = 'LOAD_POKEMONS'

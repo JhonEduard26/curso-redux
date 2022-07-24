@@ -2,8 +2,9 @@ import { useEffect } from 'react'
 import {
   Col,
   Row,
+  Spin
 } from 'antd'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Searcher } from './components/ui/Searcher'
 import { PokemonList } from './components/pokemon/PokemonList'
 import { getPokemons } from './api/getPokemons'
@@ -11,20 +12,22 @@ import logo from './static/logo.svg'
 
 import 'antd/dist/antd.css'
 import './App.css'
-import { getPokemonsWithDetails } from './actions'
+import { getPokemonsWithDetails, loadPokemons } from './actions'
 
 export const App = () => {
 
   const dispatch = useDispatch()
 
+  const { isLoading } = useSelector(state => state.pokemons)
+
   useEffect(() => {
     const fetchPokemons = async () => {
+      dispatch(loadPokemons())
       const pokemonRes = await getPokemons()
       dispatch(getPokemonsWithDetails(pokemonRes))
     }
     fetchPokemons()
   }, [])
-
 
   return (
     <div className="App">
@@ -42,9 +45,19 @@ export const App = () => {
           <Searcher />
         </Col>
       </Row>
-      <div className='App__card-container'>
-        <PokemonList />
-      </div>
+
+      {
+        isLoading
+          ?
+          <Col offset={12} style={{ marginTop: 36 }}>
+            <Spin size='large' />
+          </Col>
+          :
+          <div className='App__card-container'>
+            <PokemonList />
+          </div>
+      }
+
     </div>
   )
 }
