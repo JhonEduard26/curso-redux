@@ -3,25 +3,24 @@ import {
   Col,
   Row,
 } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Searcher } from './components/ui/Searcher'
 import { PokemonList } from './components/pokemon/PokemonList'
 import { getPokemons } from './api/getPokemons'
 import logo from './static/logo.svg'
-import { setPokemons } from './actions'
 
 import 'antd/dist/antd.css'
 import './App.css'
+import { getPokemonsWithDetails } from './actions'
 
 export const App = () => {
 
-  const { pokemons } = useSelector(state => state.pokemons)
   const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonRes = await getPokemons()
-      dispatch(setPokemons(pokemonRes))
+      dispatch(getPokemonsWithDetails(pokemonRes))
     }
     fetchPokemons()
   }, [])
@@ -44,7 +43,7 @@ export const App = () => {
         </Col>
       </Row>
       <div className='App__card-container'>
-        <PokemonList pokemons={pokemons} />
+        <PokemonList />
       </div>
     </div>
   )

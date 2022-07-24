@@ -3,14 +3,13 @@ import { StarOutlined } from '@ant-design/icons'
 
 const { Meta } = Card
 
-export const PokemonCard = ({ name }) => {
-
+export const PokemonCard = ({ name, sprite, types }) => {
   return (
     <Card
       cover={
         <img
-          alt="example"
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+          alt={name}
+          src={sprite}
         />}
       actions={[
         <StarOutlined />
@@ -18,7 +17,7 @@ export const PokemonCard = ({ name }) => {
     >
       <Meta
         title={name}
-        description="Normal"
+        description={types.map(type => type.type.name).join(', ')}
       />
     </Card>
   )

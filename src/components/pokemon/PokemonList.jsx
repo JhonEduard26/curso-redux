@@ -9,8 +9,12 @@ export const PokemonList = () => {
   return (
     <div className="PokemonList">
       {
-        pokemons.map(({ name }) => (
-          <PokemonCard key={name} name={name} />
+        pokemons.map(({ name, sprites, types }) => (
+          <PokemonCard
+            key={name}
+            name={name}
+            sprite={sprites.front_default}
+            types={types} />
         ))
       }
     </div>
