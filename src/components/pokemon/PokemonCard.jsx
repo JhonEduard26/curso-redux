@@ -1,5 +1,5 @@
 import { Card } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setFavorite } from '../../actions'
 import { StarButton } from '../ui/StarButton'
 

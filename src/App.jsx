@@ -18,7 +18,7 @@ export const App = () => {
 
   const dispatch = useDispatch()
 
-  const { isLoading } = useSelector(state => state.pokemons)
+  const { isLoading } = useSelector(state => state.ui)
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -27,6 +27,7 @@ export const App = () => {
       dispatch(getPokemonsWithDetails(pokemonRes))
     }
     fetchPokemons()
+
   }, [])
 
   return (
