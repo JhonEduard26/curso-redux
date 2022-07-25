@@ -1,6 +1,6 @@
 import { Card } from 'antd'
 import { useDispatch } from 'react-redux'
-import { setFavorite } from '../../actions'
+import { setFavorite } from '../../store/slices/pokemon/pokemonSlice'
 import { StarButton } from '../ui/StarButton'
 
 const { Meta } = Card
@@ -10,7 +10,7 @@ export const PokemonCard = ({ name, types, sprites, id, favorite }) => {
   const dispatch = useDispatch()
 
   const handleOnFavorite = () => {
-    dispatch(setFavorite({ pokemonId: id }))
+    dispatch(setFavorite(id))
   }
 
   return (

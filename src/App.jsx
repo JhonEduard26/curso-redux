@@ -7,12 +7,11 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { Searcher } from './components/ui/Searcher'
 import { PokemonList } from './components/pokemon/PokemonList'
-import { getPokemons } from './api/getPokemons'
 import logo from './static/logo.svg'
 
 import 'antd/dist/antd.css'
 import './App.css'
-import { getPokemonsWithDetails, loadPokemons } from './actions'
+import { getPokemons } from './store/slices/pokemon/thunks'
 
 export const App = () => {
 
@@ -21,13 +20,7 @@ export const App = () => {
   const { isLoading } = useSelector(state => state.ui)
 
   useEffect(() => {
-    const fetchPokemons = async () => {
-      dispatch(loadPokemons())
-      const pokemonRes = await getPokemons()
-      dispatch(getPokemonsWithDetails(pokemonRes))
-    }
-    fetchPokemons()
-
+    dispatch(getPokemons())
   }, [])
 
   return (

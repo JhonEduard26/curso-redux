@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { pokemonReducer } from "../reducers/pokemons"
-import { uiReducer } from "../reducers/ui"
+import { pokemonSlice } from "./slices/pokemon/pokemonSlice"
+import { uiSlice } from "./slices/ui/uiSlice"
 
 export const store = configureStore({
   reducer: {
-    pokemons: pokemonReducer,
-    ui: uiReducer,
+    pokemons: pokemonSlice.reducer,
+    ui: uiSlice.reducer,
   }
 })
